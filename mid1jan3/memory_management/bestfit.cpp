@@ -26,7 +26,13 @@ int main(){
     for(int i = 0; i < m; i++){
         if(prreq[i] <= blocks[i]){
             assign[pi[i]] = bi[i];
-        } else break;
+        } else {
+            for(int j = i; j < n; j++){
+                if(prreq[i] <= blocks[j] && assign[pi[i]] == -1){
+                assign[pi[i]] = bi[j];
+                }
+            }
+        }
     }
     cout << "Process : Block - Assignments: " << endl;
     for(int i = 0; i < m; i++) cout << "P" << i << " : " << "B" << assign[i] << ", ";    
